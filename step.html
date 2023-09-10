@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .step-bar {
+            width: 50%;
+            background-color: #ebebeb;
+            border-radius: 5px;
+            padding: 10px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: flex-start;
+            width: fit-content;
+            white-space: nowrap;
+        }
+
+        .step {
+            width: 60px;
+            height: 30px;
+            background-color: #ccc;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .scroll-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #ccc;
+            border-radius: 50%;
+            border: none;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .scroll-btn.left {
+            left: 10px;
+        }
+
+        .scroll-btn.right {
+            right: 10px;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+<div class="step-bar">
+    <div class="steps">
+        <div class="step">1</div>
+        <div class="step">2</div>
+        <div class="step">3</div>
+        <div class="step">4</div>
+        <div class="step">5</div>
+        <div class="step">6</div>
+        <div class="step">7</div>
+        <div class="step">8</div>
+        <div class="step">9</div>
+        <div class="step">10</div>
+        <div class="step">11</div>
+        <div class="step">12</div>
+        <div class="step">13</div>
+        <div class="step">14</div>
+        <div class="step">15</div>
+        <div class="step">16</div>
+        <div class="step">17</div>
+    </div>
+</div>
+<button class="scroll-btn left">&lt;</button>
+<button class="scroll-btn right">&gt;</button>
+
+<script>
+    const stepBar = document.querySelector(".step-bar");
+    const steps = document.querySelector(".steps");
+    const scrollBtnLeft = document.querySelector(".scroll-btn.left");
+    const scrollBtnRight = document.querySelector(".scroll-btn.right");
+
+    scrollBtnLeft.addEventListener("click", () => {
+        stepBar.scrollBy({
+            left: -100,
+            behavior: "smooth",
+        });
+    });
+
+    scrollBtnRight.addEventListener("click", () => {
+        stepBar.scrollBy({
+            left: 100,
+            behavior: "smooth",
+        });
+    });
+
+
+
+</script>
+
+</body>
+</html>
