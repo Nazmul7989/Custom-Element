@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Scroll System</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Hide default scrollbar */
+        }
+
+        .scroll-container {
+            display: flex;
+            overflow-x: hidden; /* Hide horizontal overflow */
+            width: 100vw;
+            height: 100px;
+            background-color: #dddddd;
+            margin-top: 50px;
+        }
+
+        .scroll-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            padding: 0 20px;
+        }
+
+        .scroll-item {
+            flex: 0 0 350px;
+            height: 70px;
+            background-color: #FFFFFF;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            display: flex; justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="scroll-container">
+    <div class="scroll-content">
+        <div class="scroll-item">Item 1</div>
+        <div class="scroll-item">Item 2</div>
+        <div class="scroll-item">Item 3</div>
+        <div class="scroll-item">Item 4</div>
+        <div class="scroll-item">Item 5</div>
+        <div class="scroll-item">Item 6</div>
+        <div class="scroll-item">Item 7</div>
+        <div class="scroll-item">Item 8</div>
+        <div class="scroll-item">Item 9</div>
+        <div class="scroll-item">Item 10</div>
+    </div>
+</div>
+
+<script>
+    const scrollContainer = document.querySelector(".scroll-container");
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    scrollContainer.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.pageX - scrollContainer.offsetLeft;
+        scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener("mouseup", () => {
+        isDragging = false;
+    });
+
+    scrollContainer.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainer.offsetLeft;
+        const walk = (x - startX) * 2; // Adjust scrolling sensitivity
+        scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+
+</script>
+</body>
+</html>
