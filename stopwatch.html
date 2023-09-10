@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stop Watch</title>
+</head>
+<body>
+    <div>
+        Timer:
+        <span id="watch"></span>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let watch = document.querySelector('#watch');
+            let time = 0;
+
+            window.timer = setInterval(function () {
+                time++;
+
+                var hr = Math.floor((time % (60 * 60 * 24)) / (60 * 60));
+                var min = Math.floor((time % (60 * 60)) / (60));
+                var sec = Math.floor(time % 60);
+
+                hr = (hr < 10)?'0'+hr:hr;
+                min = (min < 10)?'0'+min:min;
+                sec = (sec < 10)?'0'+sec:sec;
+
+                let clock = hr + ":" + min + ":" + sec;
+
+                watch.innerHTML = clock;
+            }, 1000);
+
+        });
+    </script>
+</body>
+</html>
